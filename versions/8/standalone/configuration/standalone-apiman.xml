@@ -418,19 +418,24 @@
       </kc:secure-deployment>
     </subsystem>
   </profile>
+  
   <interfaces>
-    <interface name="management">
-      <inet-address value="${jboss.bind.address.management:127.0.0.1}" />
-    </interface>
-    <interface name="public">
-      <inet-address value="${jboss.bind.address:127.0.0.1}" />
-    </interface>
-    <!-- TODO - only show this if the jacorb subsystem is added -->
-    <interface name="unsecure">
-      <!-- ~ Used for IIOP sockets in the standard configuration. ~ To secure JacORB you need to setup SSL -->
-      <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}" />
-    </interface>
+        <interface name="management">
+            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+        </interface>
+        <interface name="public">
+            <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+        </interface>
+        <!-- TODO - only show this if the jacorb subsystem is added  -->
+        <interface name="unsecure">
+            <!--
+              ~  Used for IIOP sockets in the standard configuration.
+              ~                  To secure JacORB you need to setup SSL 
+              -->
+            <inet-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
+        </interface>
   </interfaces>
+  
   <socket-binding-group name="standard-sockets" default-interface="public"
     port-offset="${jboss.socket.binding.port-offset:0}">
     <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}" />
