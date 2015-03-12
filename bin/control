@@ -32,8 +32,11 @@ function waitondeployments() {
     if ! ismgmtup; then
       client_message "Timed out waiting for management listening port"
       client_message "Could not connect to WildFly management interface, skipping deployment verification"
-    else
-      getscanconfig
+    fi 
+#    
+# Christina: Ignore this for now since it didn't work and took a long time
+#    else
+#      getscanconfig
 
       if [ "$SCANCONFIG" == "" ]; then
         client_message "Could not connect to WildFly management interface, skipping deployment verification"
