@@ -4,7 +4,7 @@
 
   <groupId>io.apiman</groupId>
   <artifactId>apiman-quickstarts</artifactId>
-  <version>1.0.3.Final</version>
+  <version>1.1.0.Final</version>
   <name>apiman-quickstarts</name>
   <packaging>pom</packaging>
 
@@ -85,6 +85,7 @@
 
   <modules>
     <module>echo-service</module>
+    <module>elasticsearch</module>
   </modules>
 
   <build>
@@ -186,4 +187,3 @@
   </build>
 
 </project>
-

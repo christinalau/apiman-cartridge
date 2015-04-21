@@ -391,6 +391,7 @@
         <kc:realm-public-key>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrVrCuTtArbgaZzL1hvh0xtL5mc7o0NqPVnYXkLvgcwiC3BjLGw1tGEGoJaXDuSaRllobm53JBhjx33UNv+5z/UMG4kytBWxheNVKnL6GgqlNabMaFfPLPCF8kAgKnsi79NMo+n6KnSY8YeUmec/p2vjO2NjsSAVcWEQMVhJ31LwIDAQAB</kc:realm-public-key>
         <kc:auth-server-url>/auth</kc:auth-server-url>
         <kc:ssl-required>none</kc:ssl-required>
+        <kc:enable-cors>true</kc:enable-cors>
         <kc:principal-attribute>preferred_username</kc:principal-attribute>
       </kc:realm>
       <kc:secure-deployment xmlns:kc="urn:jboss:domain:keycloak:1.0" name="apiman.war">
@@ -401,9 +402,9 @@
         </kc:credential>
         <kc:enable-basic-auth>true</kc:enable-basic-auth>
       </kc:secure-deployment>
-      <kc:secure-deployment xmlns:kc="urn:jboss:domain:keycloak:1.0" name="apiman-manager.war">
+      <kc:secure-deployment xmlns:kc="urn:jboss:domain:keycloak:1.0" name="apimanui.war">
         <kc:realm>apiman</kc:realm>
-        <kc:resource>apiman-manager</kc:resource>
+        <kc:resource>apimanui</kc:resource>
         <kc:credential name="secret">
           password
         </kc:credential>
@@ -418,7 +419,7 @@
       </kc:secure-deployment>
     </subsystem>
   </profile>
-  
+
   <interfaces>
         <interface name="management">
             <loopback-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
@@ -435,6 +436,7 @@
             <inet-address value="${env.OPENSHIFT_WILDFLY_IP}"/>
         </interface>
   </interfaces>
+
   
   <socket-binding-group name="standard-sockets" default-interface="public"
     port-offset="${jboss.socket.binding.port-offset:0}">
